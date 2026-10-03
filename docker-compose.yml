@@ -147,7 +147,8 @@ services:
       ]
     image: postgres:15
     ports:
-      - "5432:5432"
+      # Port mapped to 5433 by default to avoid conflict with existing host PostgreSQL instances on 5432
+      - "${HOPP_DB_PORT:-5433}:5432"
     user: postgres
     environment:
       # The default user defined by the docker image
